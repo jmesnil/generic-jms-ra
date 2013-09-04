@@ -50,6 +50,11 @@
                 <artifactId>jboss-jca-api</artifactId>
                 <version>1.5.0.GA</version>
             </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -67,5 +72,7 @@
 
     <modules>
         <module>generic-jms-ra-jar</module>
+        <module>generic-jms-ra-rar</module>
+        <module>testsuite</module>
     </modules>
 </project>
