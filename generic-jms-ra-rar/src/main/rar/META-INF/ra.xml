@@ -11,7 +11,7 @@
 
     <vendor-name>Red Hat Middleware LLC</vendor-name>
     <eis-type>JMS 1.1 Server</eis-type>
-    <resourceadapter-version>5.0</resourceadapter-version>
+    <resourceadapter-version>1.0</resourceadapter-version>
 
     <license>
         <description>
