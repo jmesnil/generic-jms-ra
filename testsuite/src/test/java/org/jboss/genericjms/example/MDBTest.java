@@ -24,6 +24,8 @@ package org.jboss.genericjms.example;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+
 import javax.annotation.Resource;
 import javax.jms.ConnectionFactory;
 
@@ -31,6 +33,9 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.exporter.ZipExporter;
+import org.jboss.shrinkwrap.api.importer.ZipImporter;
+import org.jboss.shrinkwrap.api.spec.EnterpriseArchive;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,11 +47,23 @@ import org.junit.runner.RunWith;
 public class MDBTest {
 
     @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "MDBTest.jar")
-                .addPackage(ExampleMDB.class.getPackage())
-                .addClass(ExampleMDB.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+    public static EnterpriseArchive createDeployment() {
+        final EnterpriseArchive ear = ShrinkWrap.create(EnterpriseArchive.class, "example.ear");
+
+        final JavaArchive rar = ShrinkWrap.create(ZipImporter.class, "example.rar")
+                .importFrom(new File("../generic-jms-ra-rar/target/generic-jms-ra-1.0.RC2-SNAPSHOT.rar"))
+                .as(JavaArchive.class);
+
+        rar.as(ZipExporter.class)
+                .exportTo(new File("/tmp/wtf.rar"), true);
+
+        final JavaArchive ejbJar = ShrinkWrap.create(JavaArchive.class, "example.jar");
+        ejbJar.addClasses(ExampleMDB.class);
+
+        ear.addAsModule(rar);
+        ear.addAsModule(ejbJar);
+
+        return ear;
     }
 
     @Resource(mappedName = "/ConnectionFactory")

@@ -2,8 +2,8 @@
 <messaging-deployment xmlns="urn:jboss:messaging-deployment:1.0">
     <hornetq-server>
         <jms-destinations>
-            <jms-queue name="queue">
-                <entry name="java:/queue/source"/>
+            <jms-queue name="exampleQueue">
+                <entry name="java:/queue/exampleQueue"/>
             </jms-queue>
         </jms-destinations>
     </hornetq-server>

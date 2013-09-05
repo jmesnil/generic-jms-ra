@@ -43,11 +43,11 @@ import org.jboss.ejb3.annotation.ResourceAdapter;
  */
 @MessageDriven(activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-        @ActivationConfigProperty(propertyName = "destination", propertyValue = "/queue/source"),
-        @ActivationConfigProperty(propertyName = "jndiParameters", propertyValue = "java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory;java.naming.provider.url=JBM_HOST:1099;java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces"),
+        @ActivationConfigProperty(propertyName = "destination", propertyValue = "/queue/exampleQueue"),
+        @ActivationConfigProperty(propertyName = "jndiParameters", propertyValue = ""),
         @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "XAConnectionFactory")
 })
-@ResourceAdapter("generic-jms-ra-1.0.RC2-SNAPSHOT_myra")
+@ResourceAdapter(value="generic-jms-ra-1.0.RC2-SNAPSHOT")
 public class ExampleMDB implements MessageListener
 {
 
