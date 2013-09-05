@@ -7,7 +7,7 @@
         <configuration>
             <property name="jbossHome">${user.home}/Developer/wildfly/build/target/wildfly-8.0.0.Beta1-SNAPSHOT</property>
             <property name="javaVmArguments">-Djboss.inst=${basedir}/target/jbossas</property>
-            <property name="serverConfig">${jboss.server.config.file.name:standalone.xml}</property>
+            <property name="serverConfig">${jboss.server.config.file.name:standalone-full.xml}</property>
             <property name="managementAddress">${node0:127.0.0.1}</property>
             <property name="managementPort">${as.managementPort:9990}</property>
 

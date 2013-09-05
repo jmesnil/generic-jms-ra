@@ -35,6 +35,11 @@
                 <artifactId>maven-rar-plugin</artifactId>
                 <configuration>
                     <raXmlFile>src/main/resources/ra.xml</raXmlFile>
+                    <archive>
+                        <manifestEntries>
+                            <Dependencies>org.hornetq</Dependencies>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
