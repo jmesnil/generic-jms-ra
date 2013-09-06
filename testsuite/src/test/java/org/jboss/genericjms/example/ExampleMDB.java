@@ -45,9 +45,9 @@ import org.jboss.ejb3.annotation.ResourceAdapter;
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
         @ActivationConfigProperty(propertyName = "destination", propertyValue = "/queue/exampleQueue"),
         @ActivationConfigProperty(propertyName = "jndiParameters", propertyValue = ""),
-        @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "XAConnectionFactory")
+        @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "ConnectionFactory")
 })
-@ResourceAdapter(value="generic-jms-ra-1.0.RC2-SNAPSHOT")
+@ResourceAdapter(value="example.ear#generic-jms-ra-1.0.RC2-SNAPSHOT")
 public class ExampleMDB implements MessageListener
 {
 
