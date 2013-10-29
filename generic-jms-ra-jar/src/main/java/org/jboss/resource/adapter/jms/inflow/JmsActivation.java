@@ -415,7 +415,7 @@ public class JmsActivation implements ExceptionListener {
         log.debug("Got connection factory " + preliminaryObject + " from " + connectionFactory);
         log.debug("Attempting to create connection with user " + user);
         Connection result;
-        if (preliminaryObject instanceof XAConnectionFactory && isDeliveryTransacted) {
+        if (preliminaryObject instanceof XAConnectionFactory) {
             XAConnectionFactory xagcf = (XAConnectionFactory) preliminaryObject;
             if (user != null) {
                 result = xagcf.createXAConnection(user, pass);
