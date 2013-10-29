@@ -276,6 +276,10 @@ public class JmsSessionFactoryImpl implements JmsSessionFactory, Referenceable {
             }
         }
 
+        // Temporarily disable temp topic deletion.
+        // that means that as long as the underlying JMS connection is not closed,
+        // the temp topics will be kept.
+        /*
         synchronized (tempTopics) {
             for (Iterator i = tempTopics.iterator(); i.hasNext(); ) {
                 TemporaryTopic temp = (TemporaryTopic) i.next();
@@ -284,11 +288,12 @@ public class JmsSessionFactoryImpl implements JmsSessionFactory, Referenceable {
                         log.trace("Closing temporary topic " + temp + " for " + this);
                     temp.delete();
                 } catch (Throwable t) {
-                    log.trace("Error deleting temporary queue", t);
+                    log.trace("Error deleting temporary topic", t);
                 }
                 i.remove();
             }
         }
+        */
     }
 
     public void closeSession(JmsSession session) throws JMSException {
